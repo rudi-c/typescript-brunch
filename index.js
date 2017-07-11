@@ -75,6 +75,12 @@ class TypeScriptCompiler {
     this.options.experimentalDecorators = this.options.experimentalDecorators !== false;
     this.options.noEmitOnError = false; // This can"t be true when compiling this way.
 
+    if (this.options.jsx == 'preserve') {
+      this.targetExtension = '.jsx'
+    } else {
+      this.targetExtension = '.js'
+    }
+
     delete this.options.moduleResolution;
 
     this.options.sourceMap = !!config.sourceMaps;
